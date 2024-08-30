@@ -47,7 +47,6 @@ func directoryExists(path string) (bool, error) {
 }
 
 func main() {
-
 	fmt.Printf("taucoder go client version %s %s\n", gitCommit, gitTag)
 
 	apiKey := flag.String("apikey", "", "API key for authentication")
