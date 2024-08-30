@@ -1,2 +1,3 @@
-# taucoder-go-client
-Taucoder go client
+# Official Taucoder Go Client
+
+Taucoder Go CLI Client
