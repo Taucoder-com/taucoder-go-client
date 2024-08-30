@@ -13,6 +13,8 @@ import (
 	"github.com/Taucoder-com/taucoder-go-client/pkg/job"
 )
 
+var buildTimestamp string = "dev"
+
 func downloadFile(url string, filepath string) error {
 	out, err := os.Create(filepath)
 	if err != nil {
@@ -42,6 +44,9 @@ func directoryExists(path string) (bool, error) {
 }
 
 func main() {
+
+	fmt.Printf("taucoder go client version %s\n", buildTimestamp)
+
 	apiKey := flag.String("apikey", "", "API key for authentication")
 	output := flag.String("output", "", "Output file name")
 	quality := flag.Int("quality", 50, "Quality of the output image")
@@ -90,6 +95,11 @@ func main() {
 		log.Fatalf("Failed to send request: %v", err)
 	}
 
+	log.Printf("Request status: %s\n", status.RequestStatus)
+	log.Printf("%d jobs created\n", len(status.Jobs))
+	for _, j := range status.Jobs {
+		log.Printf("%s\n", j.JobID)
+	}
 	log.Printf("waiting for jobs to complete...\n")
 
 	downloadedJobs := map[string]bool{}
