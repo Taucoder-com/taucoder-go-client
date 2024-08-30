@@ -13,7 +13,10 @@ import (
 	"github.com/Taucoder-com/taucoder-go-client/pkg/job"
 )
 
-var buildTimestamp string = "dev"
+var (
+	gitCommit string = "unknown"
+	gitTag    string = "unknown"
+)
 
 func downloadFile(url string, filepath string) error {
 	out, err := os.Create(filepath)
@@ -45,7 +48,7 @@ func directoryExists(path string) (bool, error) {
 
 func main() {
 
-	fmt.Printf("taucoder go client version %s\n", buildTimestamp)
+	fmt.Printf("taucoder go client version %s %s\n", gitCommit, gitTag)
 
 	apiKey := flag.String("apikey", "", "API key for authentication")
 	output := flag.String("output", "", "Output file name")
