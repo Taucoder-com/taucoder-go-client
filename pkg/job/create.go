@@ -50,11 +50,11 @@ func (c *client) NewJobCreateRequest(quality int, filenames []string, contentTyp
 	}
 
 	options := struct {
-		Quality        int    `json:"quality"`
-		EncoderVersion string `json:"encoder_version"`
+		Quality      int    `json:"quality"`
+		OutputFormat string `json:"output_format"`
 	}{
-		Quality:        quality,
-		EncoderVersion: "latest",
+		Quality:      quality,
+		OutputFormat: "jpeg",
 	}
 
 	optionsBytes, err := json.Marshal(options)
